@@ -6,7 +6,8 @@ namespace nooby\citizen\entity;
 use nooby\citizen\CitizenLibrary;
 use nooby\citizen\task\EmoteRepeatingTask;
 use nooby\citizen\task\EmoteRepeatingTimerTask;
-use nooby\CitizenLibrary\attributes\TagEditor;
+use nooby\citizen\attribute\TagEditor;
+
 use pocketmine\entity\Human;
 use pocketmine\entity\Location;
 use pocketmine\entity\Skin;
