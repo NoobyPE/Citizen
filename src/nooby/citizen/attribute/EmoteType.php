@@ -1,6 +1,6 @@
 <?php
 
-namespace nooby\CitizenLibrary\attributes;
+namespace nooby\citizen\attribute;
 
 final class EmoteType
 {

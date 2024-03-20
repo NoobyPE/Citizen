@@ -1,6 +1,6 @@
 <?php
 
-namespace nooby\CitizenLibrary\attributes;
+namespace nooby\citizen\attribute;
 
 use nooby\citizen\entity\Tag;
 use nooby\citizen\entity\Citizen;
