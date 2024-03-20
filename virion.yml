@@ -1,5 +1,5 @@
 name: Citizen
 api: 5.0.0
-antigen: nooby\citizen\CitizenLibrary
+antigen: nooby\citizen
 version: 0.0.0-ALPHA
 authors: ["iSrDxv"]
