@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace nooby\citizen\entity;
 
+use nooby\citizen\CitizenLibrary;
+use nooby\citizen\task\EmoteRepeatingTask;
+use nooby\citizen\task\EmoteRepeatingTimerTask;
 use nooby\CitizenLibrary\attributes\TagEditor;
 use pocketmine\entity\Human;
 use pocketmine\entity\Location;
@@ -28,5 +31,14 @@ class Citizen extends Human
     function getTagEditor(): TagEditor
     {
         return $this->tagEditor;
+    }
+
+    function executeEmote(string $emoteId, bool $nonStop, int $seconds): void
+    {
+        if ($nonStop) {
+            CitizenLibrary::getInstance()->getPlugin()->getScheduler()->scheduleRepeatingTask(new EmoteRepeatingTask($emoteId, $this, $seconds), 20);
+        } else {
+            CitizenLibrary::getInstance()->getPlugin()->getScheduler()->scheduleRepeatingTask(new EmoteRepeatingTimerTask($emoteId, $this, $seconds), 20);
+        }
     }
 }
