@@ -1,6 +1,6 @@
 <?php
 
-namespace nooby\CitizenLibrary\controller;
+namespace nooby\citizen\controller;
 
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\network\mcpe\protocol\InventoryTransactionPacket;

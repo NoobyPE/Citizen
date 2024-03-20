@@ -1,6 +1,6 @@
 <?php
 
-namespace nooby\CitizenLibrary\factory;
+namespace nooby\citizen\factory;
 
 use nooby\citizen\entity\Citizen;
 use pocketmine\entity\EntityDataHelper;
