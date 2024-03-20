@@ -57,13 +57,10 @@ class Tag
 
   public function sendNameTag(Player $player): void
   {
-    $packet = new SetActorDataPacket();
-    $packet->actorRuntimeId = $this->entityId;
-	$packet->syncedProperties = new PropertySyncData([], []);
     $metadata = new EntityMetadataCollection();
-	$metadata->setByte(EntityMetadataFlags::ALWAYS_SHOW_NAMETAG, 1);
+	  $metadata->setByte(EntityMetadataFlags::ALWAYS_SHOW_NAMETAG, 1);
     $metadata->setString(EntityMetadataProperties::NAMETAG, $this->nameTag);
-    $packet->metadata = $metadata->getAll();
+    $packet = SetActorDataPacket::create($this->entityId, $metadata->getAll(), new PropertySyncData([], []), 20);
     $player->getNetworkSession()->sendDataPacket($packet);
   }
 
@@ -98,7 +95,7 @@ class Tag
 		EntityMetadataProperties::ALWAYS_SHOW_NAMETAG => new ByteMetadataProperty(1),
 	];
 
-	$player->getNetworkSession()->sendDataPacket(AddActorPacket::create($this->entityId, $this->entityId, EntityIds::PLAYER, $this->getPosition()->asVector3(), null, 0, 0, 0, 0, [], $actorMetadata, new PropertySyncData([], []), []));
+	$player->getNetworkSession()->sendDataPacket(AddActorPacket::create($this->entityId, $this->entityId, EntityIds::PLAYER, $this->getPosition()->asVector3(), $player->getMotion(), $this->getLocation()->getPitch(), $this->getLocation()->getYaw(), $this->getLocation()->getYaw(), $this->getLocation()->getYaw(), [], $actorMetadata, new PropertySyncData([], []), []));
   }
 
   /**
@@ -111,9 +108,7 @@ class Tag
 
   public function despairFrom(Player $player): void
   {
-    $packet = new RemoveActorPacket();
-    $packet->actorUniqueId = $this->entityId;
-    $player->getNetworkSession()->sendDataPacket($packet);
+    $player->getNetworkSession()->sendDataPacket(RemoveActorPacket::create($this->entityId));
   }
 
   /**
