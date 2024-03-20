@@ -3,9 +3,10 @@ declare(strict_types=1);
 
 namespace nooby\citizen;
 
-use nooby\CitizenLibrary\controller\Controller;
-use nooby\CitizenLibrary\controller\DefaultController;
-use nooby\CitizenLibrary\factory\CitizenFactory;
+use nooby\citizen\controller\Controller;
+use nooby\citizen\controller\DefaultController;
+use nooby\citizen\factory\CitizenFactory;
+
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 
