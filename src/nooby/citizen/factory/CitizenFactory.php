@@ -35,7 +35,9 @@ class CitizenFactory
     */
 	public function remove(int $id): void 
 	{
-		unset($this->citizens[$id]);
+    if (isset($this->citizens[$id])) {
+      unset($this->citizens[$id]);
+    }
 	}
 
   /**
