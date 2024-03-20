@@ -3,11 +3,6 @@
 namespace nooby\citizen\factory;
 
 use nooby\citizen\entity\Citizen;
-use pocketmine\entity\EntityDataHelper;
-use pocketmine\entity\EntityFactory;
-use pocketmine\entity\Human;
-use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\world\World;
 
 class CitizenFactory 
 {
@@ -23,9 +18,6 @@ class CitizenFactory
     */
 	public function add(Citizen $citizen): void 
 	{
-    EntityFactory::getInstance()->register(Citizen::class, function(World $world, CompoundTag $nbt): Citizen {
-      return new Citizen(EntityDataHelper::parseLocation($nbt, $world), Human::parseSkinNBT($nbt), $nbt);
-    }, ["Citizen"]);
 		$this->citizens[$citizen->getId()] = $citizen;
 	}
 
