@@ -64,7 +64,7 @@ class Citizen extends Human
     function spawnTo(Player $player): void
 	{
 		$skinAdapter = new LegacySkinAdapter();
-		$packets[] = PlayerListPacket::add([PlayerListEntry::createAdditionEntry(parent::$uuid, parent::$id, "", $skinAdapter->toSkinData($this->skin))]);
+		$packets[] = PlayerListPacket::add([PlayerListEntry::createAdditionEntry($this->uuid, $this->id, "", $skinAdapter->toSkinData($this->skin))]);
 		$flags =
 			1 << EntityMetadataFlags::CAN_SHOW_NAMETAG |
 			1 << EntityMetadataFlags::ALWAYS_SHOW_NAMETAG |
@@ -74,20 +74,20 @@ class Citizen extends Human
 			EntityMetadataProperties::SCALE => new FloatMetadataProperty($this->scale)
 		];
 		$packets[] = AddPlayerPacket::create(
-			parent::$uuid,
+			$this->uuid,
 			"",
-			parent::$id,
+			$this->id,
 			"",
-			parent::$location,
+			$this->location,
 			null,
-			parent::$location->pitch,
-			parent::$location->yaw,
-			parent::$location->yaw,
+			$this->location->pitch,
+			$this->$location->yaw,
+			$this->$location->yaw,
 			ItemStackWrapper::legacy(ItemStack::null()),
 			0,
 			$actorMetadata,
 			new PropertySyncData([], []),
-			UpdateAbilitiesPacket::create(new AbilitiesData(CommandPermissions::NORMAL, PlayerPermissions::VISITOR, parent::$id, [
+			UpdateAbilitiesPacket::create(new AbilitiesData(CommandPermissions::NORMAL, PlayerPermissions::VISITOR, $this->id, [
 				new AbilitiesLayer(
 					AbilitiesLayer::LAYER_BASE,
 					array_fill(0, AbilitiesLayer::NUMBER_OF_ABILITIES, false),
@@ -106,8 +106,8 @@ class Citizen extends Human
 		}
 
         $id = spl_object_id($player);
-		if (!isset(parent::$hasSpawned[$id]) && $player->getWorld() === parent::getWorld()) {
-			parent::$hasSpawned[$id] = $player;
+		if (!isset($this->hasSpawned[$id]) && $player->getWorld() === parent::getWorld()) {
+			$this->hasSpawned[$id] = $player;
 		}
 		foreach ($packets as $pk) {
 			$player->getNetworkSession()->sendDataPacket($pk);
@@ -116,10 +116,10 @@ class Citizen extends Human
 
 	function despairFrom(Player $player): void
 	{
-		$player->getNetworkSession()->sendDataPacket(RemoveActorPacket::create(parent::$id));
+		$player->getNetworkSession()->sendDataPacket(RemoveActorPacket::create($this->id));
 		foreach ($this->tagEditor->getLines() as $tag) {
 			$tag->despairFrom($player);
 		}
-		unset(parent::$hasSpawned[spl_object_id($player)]);
+		unset($this->hasSpawned[spl_object_id($player)]);
 	}
 }
