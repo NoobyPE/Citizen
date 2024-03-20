@@ -1,0 +1,10 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/NoobyPE/Citizen
+build-by-default: true
+branches:
+- master
+projects:
+  Citizen:
+    path: ""
+    model: virion
+    type: library
+...
