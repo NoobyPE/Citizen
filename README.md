@@ -6,6 +6,6 @@ contains a unlimited possibilities for expansion with the new easy to use API.
 and a helpful dev team, Citizen will continue to expand to make your server even better! 
 For more information and all the gory details, see the wiki documentation and links down below. **WARNING: is not a plugin for PocketMine-MP, only devs**
 
- - [Wiki](https://minecraft.com)
- - [Discord](https://discord.com)
+ - [Wiki](https://github.com/NoobyPE/Citizen/wiki)
+ - [Discord](https://discord.com/cfcGZMsN4H)
  - [Development](https://poggit.pmmp.io/ci/NoobyPE/Citizen/~)
