@@ -5,13 +5,15 @@
     "license": "LGPL-3.0-only",
     "authors": [
         {
-            "name": "iSrDxv"
+            "name": "iSrDxv",
+            "email": "srclaucontact@gmail.com"
         },
         {
             "name": "IAMadDev"
         },
         {
-            "name": "NeexDev"
+            "name": "nexxii04",
+            "email": "nexdev22@gmail.com"
         }
     ],
     "autoload": {
