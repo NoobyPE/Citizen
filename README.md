@@ -8,6 +8,6 @@ For more information and all the gory details, see the wiki documentation and li
 
 <ul>
   <li>
-     [!(Wiki)][https://minecraft.com]
+     [![Wiki](https://minecraft.com)]
   </li>
 </ul>
