@@ -3,9 +3,21 @@
     "description": "Advanced non-playable character system for PocketMine-MP of NoobyPE Network",
     "type": "library",
     "license": "LGPL-3.0-only",
+    "authors": [
+        {
+            "name": "iSrDxv"
+        },
+        {
+            "name": "IAMadDev"
+        },
+        {
+            "name": "NeexDev"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "nooby\\citizen\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
