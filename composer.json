@@ -21,5 +21,8 @@
             "nooby\\citizen\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require": {
+        "php": "*"
+    }
 }
