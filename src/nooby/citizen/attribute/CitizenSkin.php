@@ -24,19 +24,19 @@ final class CitizenSkin
 		return $bytes;
 	}
 	
-	static function fromDefaultGeometry(string $skinPath, string $capePath = ''): Skin
+	static function fromDefaultGeometry(string $skinPath = '', string $capePath = ''): Skin
 	{
-		return new Skin("Standard_CustomSlim", self::getSkinDataFromPNG($skinPath), $capePath, "geometry.humanoid.custom", "");
+		return new Skin("Standard_CustomSlim", self::getSkinDataFromPNG($skinPath), self::getSkinDataFromPNG($capePath), "geometry.humanoid.custom", "");
 	}
 
 	/**
-        * USE: fromCustomGeometry("skywars, PluginBase::getDataFolder() . "SkyWars.png", PluginBase::getDataFolder() . "SkyWars.geo.json");
+        * USE: fromCustomGeometry($player->getSkin()->getSkinId(), "skywars, PluginBase::getDataFolder() . "SkyWars.png", PluginBase::getDataFolder() . "SkyWars.geo.json");
 	**/
-	static function fromCustomGeometry(string $geometry, string $skinPath, string $skinGeometryPath, string $capePath = ''): Skin
+	static function fromCustomGeometry(string $id, string $geometry, string $skinPath, string $skinGeometryPath, string $capePath = ''): Skin
 	{
 		$img = imagecreatefrompng($skinPath);
 		$skin_bytes = self::getSkinDataFromPNG($skinPath);
 		//TODO: how to use skinId????
-		return new Skin($c['skinId'], $skin_bytes, $capePath, 'geometry' . $geometry, file_get_contents($skinGeometryPath));
+		return new Skin($id, $skin_bytes, self::getSkinDataFromPNG($capePath), 'geometry' . $geometry, file_get_contents($skinGeometryPath));
 	}
 }
