@@ -6,7 +6,7 @@ use pocketmine\entity\Skin;
 
 final class CitizenSkin
 {
-	public static function getSkinDataFromPNG(string $path): string
+	static function getSkinDataFromPNG(string $path): string
 	{
 		$bytes = "";
 		if (!file_exists($path)) {
@@ -24,15 +24,15 @@ final class CitizenSkin
 		return $bytes;
 	}
 	
-	public static function fromDefaultGeometry(string $skinPath): Skin
+	static function fromDefaultGeometry(string $skinPath, string $capePath = ''): Skin
 	{
-		return new Skin("Standard_CustomSlim", self::getSkinDataFromPNG($skinPath), "", "geometry.humanoid.custom", "");
+		return new Skin("Standard_CustomSlim", self::getSkinDataFromPNG($skinPath), $capePath, "geometry.humanoid.custom", "");
 	}
 
 	/**
         * USE: fromCustomGeometry("skywars, PluginBase::getDataFolder() . "SkyWars.png", PluginBase::getDataFolder() . "SkyWars.geo.json");
 	**/
-	public static function fromCustomGeometry(string $geometry, string $skinPath, string $skinGeometryPath, string $capePath = ''): Skin
+	static function fromCustomGeometry(string $geometry, string $skinPath, string $skinGeometryPath, string $capePath = ''): Skin
 	{
 		$img = imagecreatefrompng($skinPath);
 		$skin_bytes = self::getSkinDataFromPNG($skinPath);
